@@ -1,7 +1,7 @@
 //variable global
 $bg: #f5f5f5;
 
-body{
+body {
   background: $bg;
   font-family: Avenir, Arial, Helvetica, sans-serif;
   text-align: center;
@@ -11,30 +11,47 @@ body{
   border: #2c3e50 solid 1px;
 }
 
-h1{
+h1 {
   font-size: 2em;
   //variable local
   $primary-color: salmon;
   color: $primary-color;
 }
 
-p{
+p {
   color: red;
 }
 
 //nesting
-ul{
+ul {
   list-style: none;
   padding: 0;
-  li{
+  li {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     margin: 0 10px;
-    a{
+    a {
       text-decoration: none;
       color: red;
     }
+  }
+}
+
+//partials
+@use "partials/variables" as var;
+div {
+  color: var.$col;
+}
+
+//parent selector
+div {
+  color: red;
+  &:hover {
+    color: blue;
+  }
+  &.active {
+    color: green;
   }
 }
