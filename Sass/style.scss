@@ -1,3 +1,4 @@
+//variable global
 $bg: #f5f5f5;
 
 body{
@@ -8,4 +9,15 @@ body{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+h1{
+  font-size: 2em;
+  //variable local
+  $primary-color: salmon;
+  color: $primary-color;
+}
+
+p{
+  color: $primary-color;
 }
