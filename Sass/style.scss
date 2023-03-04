@@ -51,7 +51,55 @@ div {
   &:hover {
     color: blue;
   }
-  &.active {
+  &.btn {
     color: green;
   }
 }
+
+//mixins
+@mixin flex($direction, $justify, $align) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+div {
+  @include flex(column, center, center);
+}
+
+//extend
+.btn{
+  padding: 10px 20px;
+  border: 1px solid #000;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &-1{
+    @extend .btn;
+    background: red;
+  }
+
+  &-2{
+    @extend .btn;
+    background: blue;
+  }
+}
+
+//interpolation
+@mixin btn ($name: "", $color: #000) {
+  .btnM#{$name} {
+    background: $color;
+    color: white;
+    &:hover {
+      background: darken($color, 10%);
+    }
+  }
+}
+
+@include btn("1", red);
+@include btn("2", blue);
