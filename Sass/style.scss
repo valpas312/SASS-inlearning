@@ -1,3 +1,7 @@
+//colors
+@use "sass:color";
+//map
+@use "sass:map";
 //partials
 @use "partials/variables" as var;
 
@@ -12,6 +16,11 @@ body {
   padding: 0;
   box-sizing: border-box;
   border: #2c3e50 solid 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 h1 {
@@ -144,3 +153,42 @@ div {
     background: darken(green, 10%);
   }
 }
+
+//lists
+$colors: red, blue, green;
+$priorities: (primary, secondary, tertiary);
+
+//methods
+$length: length($colors);
+
+//@each
+@mixin btn1 ($name: "", $bg: #444, $col:white){
+  .btnXL#{$name}{
+    background: $bg;
+    color: $col;
+  }
+}
+
+$btns: 
+  "" red white,
+  -1 red white,
+  -2 blue white;
+
+@each $name, $bg, $col in $btns {
+  @include btn1($name, $bg, $col);
+}
+
+//for
+@for $i from 1 through $length {
+  .btnXL-#{$i} {
+    background: nth($colors, $i);
+    color: white;
+  }
+}
+
+//maps
+$colors2: (
+  "primary": red,
+  "secondary": blue,
+  "tertiary": green
+);
