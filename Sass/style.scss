@@ -192,3 +192,26 @@ $colors2: (
   "secondary": blue,
   "tertiary": green
 );
+
+//operations and conditions
+$width: 100px;
+$height: 100px;
+
+div {
+  width: $width + $height;
+  height: $width - $height;
+
+  @if $width > $height {
+    background: red;
+  } @else {
+    background: blue;
+  }
+}
+
+//color functions
+$color12: #f00;
+$color22: #00f;
+
+div {
+  background: mix($color12, $color22, 50%);
+}
